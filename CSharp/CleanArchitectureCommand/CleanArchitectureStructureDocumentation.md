@@ -49,6 +49,9 @@
   - **Interceptors**: 資料庫攔截器，用於日誌紀錄、審計等攔截邏輯。
   - **Migrations**: 資料庫遷移檔案，進行資料庫結構版本控制。
 
+- **Services**: 提供基礎設施服務，例如郵件服務、檔案系統存取等。
+  - **BackgroundServices**: 背景服務，用於執行長時間運行的背景作業。
+  
 ### Web 專案
 
 應用程式的外部介面，通常是 Web API 或 MVC 應用。
@@ -111,7 +114,7 @@ CleanArchitecture/
 │
 ├── src
 │   ├── Application
-│   │   ○ 應用層，包含問題解決策略。
+│   │   ○ 應用層，包含問題解決策略、應保持商業邏輯純粹
 │   │
 │   ├── Domain
 │   │   ○ 定義核心業務邏輯與模型。
@@ -140,10 +143,11 @@ CleanArchitecture/
 │   │   ○ 額外前端應用。
 │   │
 │   ├── Endpoints
-│   │   ○ API 端點定義與管理。
+│   │   ○ API 端點定義與管理、僅應負責 API 入口。
 │   │
 │   ├── Infrastructure
 │   │   └── Services
+│   │       ○ 背景服務實作。
 │   │       ○ Web 層服務實作。
 │   │
 │   ├── Pages
