@@ -27,6 +27,10 @@
 負責應用程式的業務邏輯，包含 Use Cases（用例）或 Application Services。
 
 - **Common**: 放置共用功能或工具類別，例如輔助工具（Helpers）、擴充方法（Extension Methods）。
+- **Feature**: 每個功能模組應該有自己的資料夾，例如 TodoItems、Users 等。
+  - **Commands**: 定義應用層命令（Commands），用於執行業務操作。
+  - **Queries**: 定義應用層查詢（Queries），用於讀取資料。
+  - **Handlers**: 實作命令或查詢的處理器，負責執行實際業務邏輯。
 
 ### Domain 專案
 
@@ -114,7 +118,18 @@ CleanArchitecture/
 │
 ├── src
 │   ├── Application
-│   │   ○ 應用層，包含問題解決策略、應保持商業邏輯純粹
+│       │   ○ 應用層，包含問題解決策略、應保持商業邏輯純粹
+│       ├── Features
+│          │   ○ 依據各個功能區塊建立資料夾
+│          │
+│          ├── Commands
+│          │   ○ Create、Update、Delete 等命令。
+│          │
+│          ├── Queries
+│          │   ○ 查詢功能。
+│          │
+│          └── Handlers
+│              ○ 命令或查詢處理器的Base class。
 │   │
 │   ├── Domain
 │   │   ○ 定義核心業務邏輯與模型。
