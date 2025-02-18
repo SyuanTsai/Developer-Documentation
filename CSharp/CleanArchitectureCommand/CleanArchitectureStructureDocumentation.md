@@ -27,6 +27,11 @@
 負責應用程式的業務邏輯，包含 Use Cases（用例）或 Application Services。
 
 - **Common**: 放置共用功能或工具類別，例如輔助工具（Helpers）、擴充方法（Extension Methods）。
+- **Feature**: 每個功能模組應該有自己的資料夾，例如 TodoItems、Users 等。
+  - **Commands**: 定義應用層命令（Commands），用於執行業務操作。
+  - **Queries**: 定義應用層查詢（Queries），用於讀取資料。
+  - **Handlers**: 實作命令或查詢的處理器，負責執行實際業務邏輯。
+  - **DTOs**: 定義資料傳輸物件（Data Transfer Objects），用於命令或查詢的輸入輸出。
 
 ### Domain 專案
 
@@ -49,6 +54,9 @@
   - **Interceptors**: 資料庫攔截器，用於日誌紀錄、審計等攔截邏輯。
   - **Migrations**: 資料庫遷移檔案，進行資料庫結構版本控制。
 
+- **Services**: 提供基礎設施服務，例如郵件服務、檔案系統存取等。
+  - **BackgroundServices**: 背景服務，用於執行長時間運行的背景作業。
+  
 ### Web 專案
 
 應用程式的外部介面，通常是 Web API 或 MVC 應用。
@@ -111,7 +119,21 @@ CleanArchitecture/
 │
 ├── src
 │   ├── Application
-│   │   ○ 應用層，包含問題解決策略。
+│   │   │   ○ 應用層，包含問題解決策略、應保持商業邏輯純粹
+│   │   ├── Features
+│   │      │   ○ 依據各個功能區塊建立資料夾
+│   │      │
+│   │      ├── Commands
+│   │      │   ○ Create、Update、Delete 等命令。
+│   │      │
+│   │      ├── Queries
+│   │      │   ○ 查詢功能。
+│   │      │
+│   │      ├── Handlers
+│   │      │   ○ 命令或查詢處理器的Base class。
+│   │      │
+│   │      └── DTOs
+│   │          ○ 資料傳輸物件。
 │   │
 │   ├── Domain
 │   │   ○ 定義核心業務邏輯與模型。
@@ -140,10 +162,11 @@ CleanArchitecture/
 │   │   ○ 額外前端應用。
 │   │
 │   ├── Endpoints
-│   │   ○ API 端點定義與管理。
+│   │   ○ API 端點定義與管理、僅應負責 API 入口。
 │   │
 │   ├── Infrastructure
 │   │   └── Services
+│   │       ○ 背景服務實作。
 │   │       ○ Web 層服務實作。
 │   │
 │   ├── Pages
