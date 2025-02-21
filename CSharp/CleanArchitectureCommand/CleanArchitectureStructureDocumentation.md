@@ -29,6 +29,9 @@
 - **Common**: 放置共用功能或工具類別，例如輔助工具（Helpers）、擴充方法（Extension Methods）。
 - **Feature**: 每個功能模組應該有自己的資料夾，例如 TodoItems、Users 等。
   - **Commands**: 定義應用層命令（Commands），用於執行業務操作。
+    - **Interfaces**: 定義命令介面，用於實作命令處理器。
+    - **Models**: 定義Dto模型（Command Models），用於命令的輸入輸出。
+    - **DTOs**: 定義資料傳輸物件（Data Transfer Objects），用於命令的輸入輸出。
   - **Queries**: 定義應用層查詢（Queries），用於讀取資料。
   - **Handlers**: 實作命令或查詢的處理器，負責執行實際業務邏輯。
   - **DTOs**: 定義資料傳輸物件（Data Transfer Objects），用於命令或查詢的輸入輸出。
@@ -125,6 +128,14 @@ CleanArchitecture/
 │   │      │
 │   │      ├── Commands
 │   │      │   ○ Create、Update、Delete 等命令。
+│   │      │    ├── Interfaces
+│   │      │    │   ○ Command interfaces.
+│   │      │    │
+│   │      │    ├── Models
+│   │      │    │   ○ Command models(Dto).
+│   │      │    │
+│   │      │    └── DTOs
+│   │      │        ○ Data Transfer Objects.
 │   │      │
 │   │      ├── Queries
 │   │      │   ○ 查詢功能。
