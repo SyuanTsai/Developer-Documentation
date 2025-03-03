@@ -89,7 +89,7 @@ public class GlobalUnauthorizedResponseHeaderFilter : IOperationFilter
 }
 ```
 
-3. 註冊方法
+## 3. 註冊方法
 
 ```csharp
 
